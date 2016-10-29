@@ -10,7 +10,7 @@
 <body>
 	<ul id="messages"></ul>
 	<form onsubmit="return handleEnterKey()">
-  		<input id="messageBox" autocomplete="off" />
+  		<input id="messageBox" />
   		<button type="button" onClick=sendMessage()>Send</button>
 	</form>
 </body>

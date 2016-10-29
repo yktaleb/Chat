@@ -8,9 +8,11 @@
 	<script src="<c:url value="/resources/js/app.js"/>"> </script>
 </head>
 <body>
+	<div>
 	<ul id="messages"></ul>
+	</div>
 	<form onsubmit="return handleEnterKey()">
-  		<input id="messageBox" autocomplete="off" />
+  		<input id="messageBox" />
   		<button type="button" onClick=sendMessage()>Send</button>
 	</form>
 </body>

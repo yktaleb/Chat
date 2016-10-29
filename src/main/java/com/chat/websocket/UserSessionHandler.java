@@ -22,14 +22,20 @@ public class UserSessionHandler {
         liveSessions.remove(session);
     }
 
-    public void sendMessageToAll(Message message) {
+    public void sendMessageToAll(Message message, Session currentSession) {
         JsonProvider provider = JsonProvider.provider();
         JsonObject jsonMessage = provider.createObjectBuilder()
                 .add(Message.JSON_NAME_NICK_NAME, message.getNickName())
                 .add(Message.JSON_NAME_CONTENT, message.getContent())
                 .build();
+
+        String room = (String) currentSession.getUserProperties().get("room");
+
         for (Session session : liveSessions) {
-            sendToSession(session, jsonMessage);
+            System.out.println(session.getUserProperties().get("room"));
+            if (session.isOpen() && room.equals(session.getUserProperties().get("room"))){
+                sendToSession(session, jsonMessage);
+            }
         }
     }
 
